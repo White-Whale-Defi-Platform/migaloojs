@@ -1,0 +1,51 @@
+{
+  "name": "migaloojs",
+  "version": "0.0.9",
+  "author": "nick134 <nick134-bit@proton.me>",
+  "description": "migalooJS makes it easy to compose and broadcast Migaloo and Cosmos messages, with all of the proto and amino encoding handled for you.",
+  "homepage": "https://github.com/White-Whale-Defi-Platform/migaloojs",
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "dist/codegen/index.js",
+  "module": "dist/codegen/index.mjs",
+  "typings": "dist/codegen/index.d.ts",
+  "directories": {
+    "lib": "src"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/White-Whale-Defi-Platform/migaloojs"
+  },
+  "bugs": {
+    "url": "https://github.com/White-Whale-Defi-Platform/migaloojs/issues"
+  },
+  "scripts": {
+    "build:cjs": "yarn tsc -p tsconfig.json --outDir dist --module commonjs || true",
+    "build:mjs": "yarn tsc -p tsconfig.json --outDir mjs --module es2022 --declaration false || true",
+    "clean:mjs": "rimraf mjs",
+    "clean:dist": "rimraf dist",
+    "clean": "npm run clean:mjs && npm run clean:dist",
+    "build:rename": "publish-scripts --cmd rename --srcDir mjs --outDir dist --findExt js --replaceExt mjs --no-rmDir",
+    "build": "npm run clean && npm run build:cjs && npm run build:mjs && npm run build:rename",
+    "codegen": "node scripts/codegen.js",
+    "prepare": "npm run build",
+    "lint": "eslint src --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand"
+  },
+  "devDependencies": {
+    "@cosmology/telescope": "^1.0.1"
+  },
+  "dependencies": {
+    "@cosmjs/amino": "0.32.3",
+    "@cosmjs/encoding": "0.32.3",
+    "@cosmjs/math": "0.32.3",
+    "@cosmjs/proto-signing": "0.32.3",
+    "@cosmjs/stargate": "0.32.3",
+    "typescript": "^5.4.5"
+  },
+  "keywords": []
+}
