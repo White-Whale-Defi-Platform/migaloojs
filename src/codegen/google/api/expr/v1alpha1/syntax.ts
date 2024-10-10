@@ -1091,7 +1091,7 @@ export const Expr = {
   },
   toAmino(message: Expr): ExprAmino {
     const obj: any = {};
-    obj.id = message.id !== BigInt(0) ? message.id.toString() : undefined;
+    obj.id = message.id !== BigInt(0) ? (message.id?.toString)() : undefined;
     obj.const_expr = message.constExpr ? Constant.toAmino(message.constExpr) : undefined;
     obj.ident_expr = message.identExpr ? Expr_Ident.toAmino(message.identExpr) : undefined;
     obj.select_expr = message.selectExpr ? Expr_Select.toAmino(message.selectExpr) : undefined;
@@ -1575,7 +1575,7 @@ export const Expr_CreateStruct_Entry = {
   },
   toAmino(message: Expr_CreateStruct_Entry): Expr_CreateStruct_EntryAmino {
     const obj: any = {};
-    obj.id = message.id !== BigInt(0) ? message.id.toString() : undefined;
+    obj.id = message.id !== BigInt(0) ? (message.id?.toString)() : undefined;
     obj.field_key = message.fieldKey === null ? undefined : message.fieldKey;
     obj.map_key = message.mapKey ? Expr.toAmino(message.mapKey) : undefined;
     obj.value = message.value ? Expr.toAmino(message.value) : undefined;
@@ -1785,7 +1785,7 @@ export const Constant = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.nullValue = (reader.int32() as any);
+          message.nullValue = reader.int32() as any;
           break;
         case 2:
           message.boolValue = reader.bool();
@@ -1866,8 +1866,8 @@ export const Constant = {
     const obj: any = {};
     obj.null_value = message.nullValue === null ? undefined : message.nullValue;
     obj.bool_value = message.boolValue === null ? undefined : message.boolValue;
-    obj.int64_value = message.int64Value !== BigInt(0) ? message.int64Value.toString() : undefined;
-    obj.uint64_value = message.uint64Value !== BigInt(0) ? message.uint64Value.toString() : undefined;
+    obj.int64_value = message.int64Value !== BigInt(0) ? (message.int64Value?.toString)() : undefined;
+    obj.uint64_value = message.uint64Value !== BigInt(0) ? (message.uint64Value?.toString)() : undefined;
     obj.double_value = message.doubleValue === null ? undefined : message.doubleValue;
     obj.string_value = message.stringValue === null ? undefined : message.stringValue;
     obj.bytes_value = message.bytesValue ? base64FromBytes(message.bytesValue) : undefined;
@@ -1945,7 +1945,7 @@ export const SourceInfo_PositionsEntry = {
   },
   toAmino(message: SourceInfo_PositionsEntry): SourceInfo_PositionsEntryAmino {
     const obj: any = {};
-    obj.key = message.key !== BigInt(0) ? message.key.toString() : undefined;
+    obj.key = message.key !== BigInt(0) ? (message.key?.toString)() : undefined;
     obj.value = message.value === 0 ? undefined : message.value;
     return obj;
   },
@@ -2013,7 +2013,7 @@ export const SourceInfo_MacroCallsEntry = {
   },
   toAmino(message: SourceInfo_MacroCallsEntry): SourceInfo_MacroCallsEntryAmino {
     const obj: any = {};
-    obj.key = message.key !== BigInt(0) ? message.key.toString() : undefined;
+    obj.key = message.key !== BigInt(0) ? (message.key?.toString)() : undefined;
     obj.value = message.value ? Expr.toAmino(message.value) : undefined;
     return obj;
   },
@@ -2052,13 +2052,13 @@ export const SourceInfo = {
     writer.ldelim();
     Object.entries(message.positions).forEach(([key, value]) => {
       SourceInfo_PositionsEntry.encode({
-        key: (key as any),
+        key: key as any,
         value
       }, writer.uint32(32).fork()).ldelim();
     });
     Object.entries(message.macroCalls).forEach(([key, value]) => {
       SourceInfo_MacroCallsEntry.encode({
-        key: (key as any),
+        key: key as any,
         value
       }, writer.uint32(42).fork()).ldelim();
     });

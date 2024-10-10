@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../binary";
 import { DeepPartial } from "../helpers";
 export enum ScalarType {
@@ -289,10 +290,10 @@ export const ScalarDescriptor = {
           if ((tag & 7) === 2) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.fieldType.push((reader.int32() as any));
+              message.fieldType.push(reader.int32() as any);
             }
           } else {
-            message.fieldType.push((reader.int32() as any));
+            message.fieldType.push(reader.int32() as any);
           }
           break;
         default:

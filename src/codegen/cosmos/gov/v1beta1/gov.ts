@@ -563,7 +563,7 @@ export const WeightedVoteOption = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.option = (reader.int32() as any);
+          message.option = reader.int32() as any;
           break;
         case 2:
           message.weight = Decimal.fromAtomics(reader.string(), 18).toString();
@@ -767,7 +767,7 @@ export const Deposit = {
   },
   toAmino(message: Deposit): DepositAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+    obj.proposal_id = message.proposalId !== BigInt(0) ? (message.proposalId?.toString)() : undefined;
     obj.depositor = message.depositor === "" ? undefined : message.depositor;
     if (message.amount) {
       obj.amount = message.amount.map(e => e ? Coin.toAmino(e) : undefined);
@@ -819,7 +819,7 @@ export const Proposal = {
       writer.uint32(8).uint64(message.proposalId);
     }
     if (message.content !== undefined) {
-      Any.encode((message.content as Any), writer.uint32(18).fork()).ldelim();
+      Any.encode(message.content as Any, writer.uint32(18).fork()).ldelim();
     }
     if (message.status !== 0) {
       writer.uint32(24).int32(message.status);
@@ -855,10 +855,10 @@ export const Proposal = {
           message.proposalId = reader.uint64();
           break;
         case 2:
-          message.content = (Cosmos_govv1beta1Content_InterfaceDecoder(reader) as Any);
+          message.content = Cosmos_govv1beta1Content_InterfaceDecoder(reader) as Any;
           break;
         case 3:
-          message.status = (reader.int32() as any);
+          message.status = reader.int32() as any;
           break;
         case 4:
           message.finalTallyResult = TallyResult.decode(reader, reader.uint32());
@@ -929,8 +929,8 @@ export const Proposal = {
   },
   toAmino(message: Proposal): ProposalAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
-    obj.content = message.content ? Cosmos_govv1beta1Content_ToAmino((message.content as Any)) : undefined;
+    obj.proposal_id = message.proposalId !== BigInt(0) ? (message.proposalId?.toString)() : undefined;
+    obj.content = message.content ? Cosmos_govv1beta1Content_ToAmino(message.content as Any) : undefined;
     obj.status = message.status === 0 ? undefined : message.status;
     obj.final_tally_result = message.finalTallyResult ? TallyResult.toAmino(message.finalTallyResult) : TallyResult.toAmino(TallyResult.fromPartial({}));
     obj.submit_time = message.submitTime ? Timestamp.toAmino(toTimestamp(message.submitTime)) : new Date();
@@ -1112,7 +1112,7 @@ export const Vote = {
           message.voter = reader.string();
           break;
         case 3:
-          message.option = (reader.int32() as any);
+          message.option = reader.int32() as any;
           break;
         case 4:
           message.options.push(WeightedVoteOption.decode(reader, reader.uint32()));
@@ -1148,7 +1148,7 @@ export const Vote = {
   },
   toAmino(message: Vote): VoteAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId ? message.proposalId.toString() : "0";
+    obj.proposal_id = message.proposalId ? (message.proposalId?.toString)() : "0";
     obj.voter = message.voter === "" ? undefined : message.voter;
     obj.option = message.option === 0 ? undefined : message.option;
     if (message.options) {

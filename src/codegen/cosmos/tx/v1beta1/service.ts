@@ -856,7 +856,7 @@ export const GetTxsEventRequest = {
           message.pagination = PageRequest.decode(reader, reader.uint32());
           break;
         case 3:
-          message.orderBy = (reader.int32() as any);
+          message.orderBy = reader.int32() as any;
           break;
         case 4:
           message.page = reader.uint64();
@@ -906,8 +906,8 @@ export const GetTxsEventRequest = {
     }
     obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     obj.order_by = message.orderBy === 0 ? undefined : message.orderBy;
-    obj.page = message.page !== BigInt(0) ? message.page.toString() : undefined;
-    obj.limit = message.limit !== BigInt(0) ? message.limit.toString() : undefined;
+    obj.page = message.page !== BigInt(0) ? (message.page?.toString)() : undefined;
+    obj.limit = message.limit !== BigInt(0) ? (message.limit?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: GetTxsEventRequestAminoMsg): GetTxsEventRequest {
@@ -1017,7 +1017,7 @@ export const GetTxsEventResponse = {
       obj.tx_responses = message.txResponses;
     }
     obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
-    obj.total = message.total !== BigInt(0) ? message.total.toString() : undefined;
+    obj.total = message.total !== BigInt(0) ? (message.total?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: GetTxsEventResponseAminoMsg): GetTxsEventResponse {
@@ -1071,7 +1071,7 @@ export const BroadcastTxRequest = {
           message.txBytes = reader.bytes();
           break;
         case 2:
-          message.mode = (reader.int32() as any);
+          message.mode = reader.int32() as any;
           break;
         default:
           reader.skipType(tag & 7);
@@ -1566,7 +1566,7 @@ export const GetBlockWithTxsRequest = {
   },
   toAmino(message: GetBlockWithTxsRequest): GetBlockWithTxsRequestAmino {
     const obj: any = {};
-    obj.height = message.height !== BigInt(0) ? message.height.toString() : undefined;
+    obj.height = message.height !== BigInt(0) ? (message.height?.toString)() : undefined;
     obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
     return obj;
   },

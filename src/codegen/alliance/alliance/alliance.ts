@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { RewardHistory, RewardHistoryAmino, RewardHistorySDKType } from "./params";

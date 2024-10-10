@@ -560,7 +560,7 @@ export const MsgSubmitProposalResponse = {
   },
   toAmino(message: MsgSubmitProposalResponse): MsgSubmitProposalResponseAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+    obj.proposal_id = message.proposalId !== BigInt(0) ? (message.proposalId?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgSubmitProposalResponseAminoMsg): MsgSubmitProposalResponse {
@@ -596,7 +596,7 @@ export const MsgExecLegacyContent = {
   aminoType: "cosmos-sdk/v1/MsgExecLegacyContent",
   encode(message: MsgExecLegacyContent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.content !== undefined) {
-      Any.encode((message.content as Any), writer.uint32(10).fork()).ldelim();
+      Any.encode(message.content as Any, writer.uint32(10).fork()).ldelim();
     }
     if (message.authority !== "") {
       writer.uint32(18).string(message.authority);
@@ -611,7 +611,7 @@ export const MsgExecLegacyContent = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.content = (Cosmos_govv1beta1Content_InterfaceDecoder(reader) as Any);
+          message.content = Cosmos_govv1beta1Content_InterfaceDecoder(reader) as Any;
           break;
         case 2:
           message.authority = reader.string();
@@ -641,7 +641,7 @@ export const MsgExecLegacyContent = {
   },
   toAmino(message: MsgExecLegacyContent): MsgExecLegacyContentAmino {
     const obj: any = {};
-    obj.content = message.content ? Cosmos_govv1beta1Content_ToAmino((message.content as Any)) : undefined;
+    obj.content = message.content ? Cosmos_govv1beta1Content_ToAmino(message.content as Any) : undefined;
     obj.authority = message.authority === "" ? undefined : message.authority;
     return obj;
   },
@@ -764,7 +764,7 @@ export const MsgVote = {
           message.voter = reader.string();
           break;
         case 3:
-          message.option = (reader.int32() as any);
+          message.option = reader.int32() as any;
           break;
         case 4:
           message.metadata = reader.string();
@@ -802,7 +802,7 @@ export const MsgVote = {
   },
   toAmino(message: MsgVote): MsgVoteAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId ? message.proposalId.toString() : "0";
+    obj.proposal_id = message.proposalId ? (message.proposalId?.toString)() : "0";
     obj.voter = message.voter === "" ? undefined : message.voter;
     obj.option = message.option === 0 ? undefined : message.option;
     obj.metadata = message.metadata === "" ? undefined : message.metadata;
@@ -963,7 +963,7 @@ export const MsgVoteWeighted = {
   },
   toAmino(message: MsgVoteWeighted): MsgVoteWeightedAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId ? message.proposalId.toString() : "0";
+    obj.proposal_id = message.proposalId ? (message.proposalId?.toString)() : "0";
     obj.voter = message.voter === "" ? undefined : message.voter;
     if (message.options) {
       obj.options = message.options.map(e => e ? WeightedVoteOption.toAmino(e) : undefined);
@@ -1117,7 +1117,7 @@ export const MsgDeposit = {
   },
   toAmino(message: MsgDeposit): MsgDepositAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId ? message.proposalId.toString() : "0";
+    obj.proposal_id = message.proposalId ? (message.proposalId?.toString)() : "0";
     obj.depositor = message.depositor === "" ? undefined : message.depositor;
     if (message.amount) {
       obj.amount = message.amount.map(e => e ? Coin.toAmino(e) : undefined);

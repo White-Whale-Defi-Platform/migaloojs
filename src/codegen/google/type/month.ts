@@ -1,3 +1,4 @@
+//@ts-nocheck
 /** Represents a month in the Gregorian calendar. */
 export enum Month {
   /** MONTH_UNSPECIFIED - The unspecifed month. */

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Rpc } from "../../../helpers";
 import { BinaryReader } from "../../../binary";
 import { MsgUpdateParams, MsgUpdateParamsResponse, MsgCreateDenom, MsgCreateDenomResponse, MsgMint, MsgMintResponse, MsgBurn, MsgBurnResponse, MsgChangeAdmin, MsgChangeAdminResponse, MsgSetDenomMetadata, MsgSetDenomMetadataResponse, MsgSetBeforeSendHook, MsgSetBeforeSendHookResponse, MsgForceTransfer, MsgForceTransferResponse } from "./tx";

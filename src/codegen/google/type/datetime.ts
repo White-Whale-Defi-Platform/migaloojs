@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Duration, DurationAmino, DurationSDKType } from "../protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { DeepPartial } from "../../helpers";

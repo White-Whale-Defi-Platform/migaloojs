@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Duration, DurationAmino, DurationSDKType } from "../../../../google/protobuf/duration";
 import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
 import { ProofSpec, ProofSpecAmino, ProofSpecSDKType } from "../../../../cosmos/ics23/v1/proofs";
@@ -832,8 +833,8 @@ export const Fraction = {
   },
   toAmino(message: Fraction): FractionAmino {
     const obj: any = {};
-    obj.numerator = message.numerator !== BigInt(0) ? message.numerator.toString() : undefined;
-    obj.denominator = message.denominator !== BigInt(0) ? message.denominator.toString() : undefined;
+    obj.numerator = message.numerator !== BigInt(0) ? (message.numerator?.toString)() : undefined;
+    obj.denominator = message.denominator !== BigInt(0) ? (message.denominator?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: FractionAminoMsg): Fraction {

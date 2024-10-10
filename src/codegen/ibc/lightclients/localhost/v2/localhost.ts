@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { DeepPartial } from "../../../../helpers";

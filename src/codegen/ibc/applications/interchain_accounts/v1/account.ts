@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { BaseAccount, BaseAccountAmino, BaseAccountSDKType } from "../../../../cosmos/auth/v1beta1/auth";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { DeepPartial } from "../../../../helpers";

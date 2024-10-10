@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Any, AnyAmino, AnySDKType } from "../protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { DeepPartial } from "../../helpers";

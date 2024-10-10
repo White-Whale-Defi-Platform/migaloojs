@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { LatLng, LatLngAmino, LatLngSDKType } from "../../type/latlng";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { DeepPartial } from "../../../helpers";

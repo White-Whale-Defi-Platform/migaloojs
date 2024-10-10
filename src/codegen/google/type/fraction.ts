@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { DeepPartial } from "../../helpers";
 /** Represents a fraction in terms of a numerator divided by a denominator. */
@@ -88,8 +89,8 @@ export const Fraction = {
   },
   toAmino(message: Fraction): FractionAmino {
     const obj: any = {};
-    obj.numerator = message.numerator !== BigInt(0) ? message.numerator.toString() : undefined;
-    obj.denominator = message.denominator !== BigInt(0) ? message.denominator.toString() : undefined;
+    obj.numerator = message.numerator !== BigInt(0) ? (message.numerator?.toString)() : undefined;
+    obj.denominator = message.denominator !== BigInt(0) ? (message.denominator?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: FractionAminoMsg): Fraction {

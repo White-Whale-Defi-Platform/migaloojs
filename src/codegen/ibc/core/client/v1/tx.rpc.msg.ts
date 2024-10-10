@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Rpc } from "../../../../helpers";
 import { BinaryReader } from "../../../../binary";
 import { MsgCreateClient, MsgCreateClientResponse, MsgUpdateClient, MsgUpdateClientResponse, MsgUpgradeClient, MsgUpgradeClientResponse, MsgSubmitMisbehaviour, MsgSubmitMisbehaviourResponse } from "./tx";

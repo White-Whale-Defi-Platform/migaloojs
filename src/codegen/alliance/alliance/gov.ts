@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { RewardWeightRange, RewardWeightRangeAmino, RewardWeightRangeSDKType } from "./alliance";
 import { BinaryReader, BinaryWriter } from "../../binary";

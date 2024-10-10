@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { NullValue } from "../../../protobuf/struct";
 import { Any, AnyAmino, AnySDKType } from "../../../protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
@@ -307,7 +308,7 @@ export const Value = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.nullValue = (reader.int32() as any);
+          message.nullValue = reader.int32() as any;
           break;
         case 2:
           message.boolValue = reader.bool();
@@ -409,8 +410,8 @@ export const Value = {
     const obj: any = {};
     obj.null_value = message.nullValue === null ? undefined : message.nullValue;
     obj.bool_value = message.boolValue === null ? undefined : message.boolValue;
-    obj.int64_value = message.int64Value !== BigInt(0) ? message.int64Value.toString() : undefined;
-    obj.uint64_value = message.uint64Value !== BigInt(0) ? message.uint64Value.toString() : undefined;
+    obj.int64_value = message.int64Value !== BigInt(0) ? (message.int64Value?.toString)() : undefined;
+    obj.uint64_value = message.uint64Value !== BigInt(0) ? (message.uint64Value?.toString)() : undefined;
     obj.double_value = message.doubleValue === null ? undefined : message.doubleValue;
     obj.string_value = message.stringValue === null ? undefined : message.stringValue;
     obj.bytes_value = message.bytesValue ? base64FromBytes(message.bytesValue) : undefined;

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Duration, DurationAmino, DurationSDKType } from "../protobuf/duration";
 import { Any, AnyAmino, AnySDKType } from "../protobuf/any";
 import { Status, StatusAmino, StatusSDKType } from "../rpc/status";

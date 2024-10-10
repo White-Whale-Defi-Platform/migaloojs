@@ -1,3 +1,4 @@
+//@ts-nocheck
 import * as _120 from "./applications/interchain_accounts/controller/v1/controller";
 import * as _121 from "./applications/interchain_accounts/controller/v1/query";
 import * as _122 from "./applications/interchain_accounts/controller/v1/tx";

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { MsgUpdateParams, MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata, MsgSetBeforeSendHook, MsgForceTransfer } from "./tx";
 export const AminoConverter = {
   "/osmosis.tokenfactory.v1beta1.MsgUpdateParams": {

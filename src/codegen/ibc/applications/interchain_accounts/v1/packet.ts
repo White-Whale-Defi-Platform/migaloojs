@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { DeepPartial, bytesFromBase64, base64FromBytes } from "../../../../helpers";
@@ -115,7 +116,7 @@ export const InterchainAccountPacketData = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.type = (reader.int32() as any);
+          message.type = reader.int32() as any;
           break;
         case 2:
           message.data = reader.bytes();

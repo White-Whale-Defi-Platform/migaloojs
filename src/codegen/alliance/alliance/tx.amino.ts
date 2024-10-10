@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { MsgDelegate, MsgRedelegate, MsgUndelegate, MsgClaimDelegationRewards, MsgUpdateParams, MsgCreateAlliance, MsgUpdateAlliance, MsgDeleteAlliance } from "./tx";
 export const AminoConverter = {
   "/alliance.alliance.MsgDelegate": {

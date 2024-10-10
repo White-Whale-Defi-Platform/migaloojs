@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Params, ParamsAmino, ParamsSDKType } from "./host";
 import { BinaryReader, BinaryWriter } from "../../../../../binary";
 import { DeepPartial } from "../../../../../helpers";

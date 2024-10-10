@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Plan, PlanAmino, PlanSDKType } from "../../../../cosmos/upgrade/v1beta1/upgrade";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
@@ -830,8 +831,8 @@ export const Height = {
   },
   toAmino(message: Height): HeightAmino {
     const obj: any = {};
-    obj.revision_number = message.revisionNumber !== BigInt(0) ? message.revisionNumber.toString() : undefined;
-    obj.revision_height = message.revisionHeight !== BigInt(0) ? message.revisionHeight.toString() : undefined;
+    obj.revision_number = message.revisionNumber !== BigInt(0) ? (message.revisionNumber?.toString)() : undefined;
+    obj.revision_height = message.revisionHeight !== BigInt(0) ? (message.revisionHeight?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: HeightAminoMsg): Height {

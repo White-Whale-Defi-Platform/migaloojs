@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { DeepPartial } from "../../helpers";
 /** Represents an amount of money with its currency type. */
@@ -119,7 +120,7 @@ export const Money = {
   toAmino(message: Money): MoneyAmino {
     const obj: any = {};
     obj.currency_code = message.currencyCode === "" ? undefined : message.currencyCode;
-    obj.units = message.units !== BigInt(0) ? message.units.toString() : undefined;
+    obj.units = message.units !== BigInt(0) ? (message.units?.toString)() : undefined;
     obj.nanos = message.nanos === 0 ? undefined : message.nanos;
     return obj;
   },

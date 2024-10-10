@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { AllianceValidatorInfo, AllianceValidatorInfoAmino, AllianceValidatorInfoSDKType, QueuedUndelegation, QueuedUndelegationAmino, QueuedUndelegationSDKType, Delegation, DelegationAmino, DelegationSDKType } from "./delegations";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Redelegation, RedelegationAmino, RedelegationSDKType } from "./redelegations";
@@ -431,7 +432,7 @@ export const RewardWeightChangeSnapshotState = {
   },
   toAmino(message: RewardWeightChangeSnapshotState): RewardWeightChangeSnapshotStateAmino {
     const obj: any = {};
-    obj.height = message.height !== BigInt(0) ? message.height.toString() : undefined;
+    obj.height = message.height !== BigInt(0) ? (message.height?.toString)() : undefined;
     obj.validator = message.validator === "" ? undefined : message.validator;
     obj.denom = message.denom === "" ? undefined : message.denom;
     obj.snapshot = message.snapshot ? RewardWeightChangeSnapshot.toAmino(message.snapshot) : undefined;

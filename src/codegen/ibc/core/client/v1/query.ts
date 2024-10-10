@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../../cosmos/base/query/v1beta1/pagination";
 import { Any, AnyAmino, AnySDKType } from "../../../../google/protobuf/any";
 import { Height, HeightAmino, HeightSDKType, IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType, ConsensusStateWithHeight, ConsensusStateWithHeightAmino, ConsensusStateWithHeightSDKType, Params, ParamsAmino, ParamsSDKType } from "./client";
@@ -1004,8 +1005,8 @@ export const QueryConsensusStateRequest = {
   toAmino(message: QueryConsensusStateRequest): QueryConsensusStateRequestAmino {
     const obj: any = {};
     obj.client_id = message.clientId === "" ? undefined : message.clientId;
-    obj.revision_number = message.revisionNumber !== BigInt(0) ? message.revisionNumber.toString() : undefined;
-    obj.revision_height = message.revisionHeight !== BigInt(0) ? message.revisionHeight.toString() : undefined;
+    obj.revision_number = message.revisionNumber !== BigInt(0) ? (message.revisionNumber?.toString)() : undefined;
+    obj.revision_height = message.revisionHeight !== BigInt(0) ? (message.revisionHeight?.toString)() : undefined;
     obj.latest_height = message.latestHeight === false ? undefined : message.latestHeight;
     return obj;
   },

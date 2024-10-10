@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { CommitmentProof, CommitmentProofAmino, CommitmentProofSDKType } from "../../../../cosmos/ics23/v1/proofs";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
 import { DeepPartial, bytesFromBase64, base64FromBytes } from "../../../../helpers";

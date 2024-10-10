@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Channel, ChannelAmino, ChannelSDKType, Packet, PacketAmino, PacketSDKType } from "./channel";
 import { Height, HeightAmino, HeightSDKType } from "../../client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
@@ -1856,7 +1857,7 @@ export const MsgRecvPacketResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.result = (reader.int32() as any);
+          message.result = reader.int32() as any;
           break;
         default:
           reader.skipType(tag & 7);
@@ -1996,7 +1997,7 @@ export const MsgTimeout = {
     obj.packet = message.packet ? Packet.toAmino(message.packet) : undefined;
     obj.proof_unreceived = message.proofUnreceived ? base64FromBytes(message.proofUnreceived) : undefined;
     obj.proof_height = message.proofHeight ? Height.toAmino(message.proofHeight) : {};
-    obj.next_sequence_recv = message.nextSequenceRecv !== BigInt(0) ? message.nextSequenceRecv.toString() : undefined;
+    obj.next_sequence_recv = message.nextSequenceRecv !== BigInt(0) ? (message.nextSequenceRecv?.toString)() : undefined;
     obj.signer = message.signer === "" ? undefined : message.signer;
     return obj;
   },
@@ -2044,7 +2045,7 @@ export const MsgTimeoutResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.result = (reader.int32() as any);
+          message.result = reader.int32() as any;
           break;
         default:
           reader.skipType(tag & 7);
@@ -2196,7 +2197,7 @@ export const MsgTimeoutOnClose = {
     obj.proof_unreceived = message.proofUnreceived ? base64FromBytes(message.proofUnreceived) : undefined;
     obj.proof_close = message.proofClose ? base64FromBytes(message.proofClose) : undefined;
     obj.proof_height = message.proofHeight ? Height.toAmino(message.proofHeight) : {};
-    obj.next_sequence_recv = message.nextSequenceRecv !== BigInt(0) ? message.nextSequenceRecv.toString() : undefined;
+    obj.next_sequence_recv = message.nextSequenceRecv !== BigInt(0) ? (message.nextSequenceRecv?.toString)() : undefined;
     obj.signer = message.signer === "" ? undefined : message.signer;
     return obj;
   },
@@ -2244,7 +2245,7 @@ export const MsgTimeoutOnCloseResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.result = (reader.int32() as any);
+          message.result = reader.int32() as any;
           break;
         default:
           reader.skipType(tag & 7);
@@ -2432,7 +2433,7 @@ export const MsgAcknowledgementResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.result = (reader.int32() as any);
+          message.result = reader.int32() as any;
           break;
         default:
           reader.skipType(tag & 7);

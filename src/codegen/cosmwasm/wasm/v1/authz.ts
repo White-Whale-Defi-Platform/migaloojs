@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { AccessConfig, AccessConfigAmino, AccessConfigSDKType } from "./types";
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
@@ -737,10 +738,10 @@ export const ContractGrant = {
       writer.uint32(10).string(message.contract);
     }
     if (message.limit !== undefined) {
-      Any.encode((message.limit as Any), writer.uint32(18).fork()).ldelim();
+      Any.encode(message.limit as Any, writer.uint32(18).fork()).ldelim();
     }
     if (message.filter !== undefined) {
-      Any.encode((message.filter as Any), writer.uint32(26).fork()).ldelim();
+      Any.encode(message.filter as Any, writer.uint32(26).fork()).ldelim();
     }
     return writer;
   },
@@ -755,10 +756,10 @@ export const ContractGrant = {
           message.contract = reader.string();
           break;
         case 2:
-          message.limit = (Cosmwasm_wasmv1ContractAuthzLimitX_InterfaceDecoder(reader) as Any);
+          message.limit = Cosmwasm_wasmv1ContractAuthzLimitX_InterfaceDecoder(reader) as Any;
           break;
         case 3:
-          message.filter = (Cosmwasm_wasmv1ContractAuthzFilterX_InterfaceDecoder(reader) as Any);
+          message.filter = Cosmwasm_wasmv1ContractAuthzFilterX_InterfaceDecoder(reader) as Any;
           break;
         default:
           reader.skipType(tag & 7);
@@ -790,8 +791,8 @@ export const ContractGrant = {
   toAmino(message: ContractGrant): ContractGrantAmino {
     const obj: any = {};
     obj.contract = message.contract === "" ? undefined : message.contract;
-    obj.limit = message.limit ? Cosmwasm_wasmv1ContractAuthzLimitX_ToAmino((message.limit as Any)) : undefined;
-    obj.filter = message.filter ? Cosmwasm_wasmv1ContractAuthzFilterX_ToAmino((message.filter as Any)) : undefined;
+    obj.limit = message.limit ? Cosmwasm_wasmv1ContractAuthzLimitX_ToAmino(message.limit as Any) : undefined;
+    obj.filter = message.filter ? Cosmwasm_wasmv1ContractAuthzFilterX_ToAmino(message.filter as Any) : undefined;
     return obj;
   },
   fromAminoMsg(object: ContractGrantAminoMsg): ContractGrant {
@@ -862,7 +863,7 @@ export const MaxCallsLimit = {
   },
   toAmino(message: MaxCallsLimit): MaxCallsLimitAmino {
     const obj: any = {};
-    obj.remaining = message.remaining !== BigInt(0) ? message.remaining.toString() : undefined;
+    obj.remaining = message.remaining !== BigInt(0) ? (message.remaining?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: MaxCallsLimitAminoMsg): MaxCallsLimit {
@@ -1015,7 +1016,7 @@ export const CombinedLimit = {
   },
   toAmino(message: CombinedLimit): CombinedLimitAmino {
     const obj: any = {};
-    obj.calls_remaining = message.callsRemaining !== BigInt(0) ? message.callsRemaining.toString() : undefined;
+    obj.calls_remaining = message.callsRemaining !== BigInt(0) ? (message.callsRemaining?.toString)() : undefined;
     if (message.amounts) {
       obj.amounts = message.amounts.map(e => e ? Coin.toAmino(e) : undefined);
     } else {

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";

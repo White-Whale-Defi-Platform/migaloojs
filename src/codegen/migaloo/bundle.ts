@@ -1,3 +1,4 @@
+//@ts-nocheck
 import * as _152 from "./feeburn/genesis";
 import * as _153 from "./feeburn/params";
 import * as _154 from "./feeburn/proposals";

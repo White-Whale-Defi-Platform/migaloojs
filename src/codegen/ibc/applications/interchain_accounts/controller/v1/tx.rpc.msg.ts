@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Rpc } from "../../../../../helpers";
 import { BinaryReader } from "../../../../../binary";
 import { MsgRegisterInterchainAccount, MsgRegisterInterchainAccountResponse, MsgSendTx, MsgSendTxResponse } from "./tx";

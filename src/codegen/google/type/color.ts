@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { FloatValue, FloatValueAmino, FloatValueSDKType } from "../protobuf/wrappers";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { DeepPartial } from "../../helpers";

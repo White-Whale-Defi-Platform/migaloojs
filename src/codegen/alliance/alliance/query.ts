@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../cosmos/base/query/v1beta1/pagination";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { AllianceAsset, AllianceAssetAmino, AllianceAssetSDKType } from "./alliance";

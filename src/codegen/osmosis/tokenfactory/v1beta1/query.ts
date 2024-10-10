@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { DenomAuthorityMetadata, DenomAuthorityMetadataAmino, DenomAuthorityMetadataSDKType } from "./authorityMetadata";
 import { BinaryReader, BinaryWriter } from "../../../binary";

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { Height, HeightAmino, HeightSDKType } from "../../../core/client/v1/client";
 import { BinaryReader, BinaryWriter } from "../../../../binary";
@@ -233,7 +234,7 @@ export const MsgTransfer = {
     obj.sender = message.sender === "" ? undefined : message.sender;
     obj.receiver = message.receiver === "" ? undefined : message.receiver;
     obj.timeout_height = message.timeoutHeight ? Height.toAmino(message.timeoutHeight) : {};
-    obj.timeout_timestamp = message.timeoutTimestamp !== BigInt(0) ? message.timeoutTimestamp.toString() : undefined;
+    obj.timeout_timestamp = message.timeoutTimestamp !== BigInt(0) ? (message.timeoutTimestamp?.toString)() : undefined;
     obj.memo = message.memo === "" ? undefined : message.memo;
     return obj;
   },
@@ -304,7 +305,7 @@ export const MsgTransferResponse = {
   },
   toAmino(message: MsgTransferResponse): MsgTransferResponseAmino {
     const obj: any = {};
-    obj.sequence = message.sequence !== BigInt(0) ? message.sequence.toString() : undefined;
+    obj.sequence = message.sequence !== BigInt(0) ? (message.sequence?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: MsgTransferResponseAminoMsg): MsgTransferResponse {

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Any, AnyProtoMsg, AnyAmino, AnySDKType } from "../../../google/protobuf/any";
 import { BinaryReader, BinaryWriter } from "../../../binary";
 import { DeepPartial, bytesFromBase64, base64FromBytes } from "../../../helpers";
@@ -385,7 +386,7 @@ export const AccessTypeParam = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.value = (reader.int32() as any);
+          message.value = reader.int32() as any;
           break;
         default:
           reader.skipType(tag & 7);
@@ -459,7 +460,7 @@ export const AccessConfig = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.permission = (reader.int32() as any);
+          message.permission = reader.int32() as any;
           break;
         case 3:
           message.addresses.push(reader.string());
@@ -546,7 +547,7 @@ export const Params = {
           message.codeUploadAccess = AccessConfig.decode(reader, reader.uint32());
           break;
         case 2:
-          message.instantiateDefaultPermission = (reader.int32() as any);
+          message.instantiateDefaultPermission = reader.int32() as any;
           break;
         default:
           reader.skipType(tag & 7);
@@ -727,7 +728,7 @@ export const ContractInfo = {
       writer.uint32(50).string(message.ibcPortId);
     }
     if (message.extension !== undefined) {
-      Any.encode((message.extension as Any), writer.uint32(58).fork()).ldelim();
+      Any.encode(message.extension as Any, writer.uint32(58).fork()).ldelim();
     }
     return writer;
   },
@@ -757,7 +758,7 @@ export const ContractInfo = {
           message.ibcPortId = reader.string();
           break;
         case 7:
-          message.extension = (Cosmwasm_wasmv1ContractInfoExtension_InterfaceDecoder(reader) as Any);
+          message.extension = Cosmwasm_wasmv1ContractInfoExtension_InterfaceDecoder(reader) as Any;
           break;
         default:
           reader.skipType(tag & 7);
@@ -804,13 +805,13 @@ export const ContractInfo = {
   },
   toAmino(message: ContractInfo): ContractInfoAmino {
     const obj: any = {};
-    obj.code_id = message.codeId !== BigInt(0) ? message.codeId.toString() : undefined;
+    obj.code_id = message.codeId !== BigInt(0) ? (message.codeId?.toString)() : undefined;
     obj.creator = message.creator === "" ? undefined : message.creator;
     obj.admin = message.admin === "" ? undefined : message.admin;
     obj.label = message.label === "" ? undefined : message.label;
     obj.created = message.created ? AbsoluteTxPosition.toAmino(message.created) : undefined;
     obj.ibc_port_id = message.ibcPortId === "" ? undefined : message.ibcPortId;
-    obj.extension = message.extension ? Cosmwasm_wasmv1ContractInfoExtension_ToAmino((message.extension as Any)) : undefined;
+    obj.extension = message.extension ? Cosmwasm_wasmv1ContractInfoExtension_ToAmino(message.extension as Any) : undefined;
     return obj;
   },
   fromAminoMsg(object: ContractInfoAminoMsg): ContractInfo {
@@ -869,7 +870,7 @@ export const ContractCodeHistoryEntry = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.operation = (reader.int32() as any);
+          message.operation = reader.int32() as any;
           break;
         case 2:
           message.codeId = reader.uint64();
@@ -914,7 +915,7 @@ export const ContractCodeHistoryEntry = {
   toAmino(message: ContractCodeHistoryEntry): ContractCodeHistoryEntryAmino {
     const obj: any = {};
     obj.operation = message.operation === 0 ? undefined : message.operation;
-    obj.code_id = message.codeId !== BigInt(0) ? message.codeId.toString() : undefined;
+    obj.code_id = message.codeId !== BigInt(0) ? (message.codeId?.toString)() : undefined;
     obj.updated = message.updated ? AbsoluteTxPosition.toAmino(message.updated) : undefined;
     obj.msg = message.msg ? JSON.parse(fromUtf8(message.msg)) : undefined;
     return obj;
@@ -997,8 +998,8 @@ export const AbsoluteTxPosition = {
   },
   toAmino(message: AbsoluteTxPosition): AbsoluteTxPositionAmino {
     const obj: any = {};
-    obj.block_height = message.blockHeight !== BigInt(0) ? message.blockHeight.toString() : undefined;
-    obj.tx_index = message.txIndex !== BigInt(0) ? message.txIndex.toString() : undefined;
+    obj.block_height = message.blockHeight !== BigInt(0) ? (message.blockHeight?.toString)() : undefined;
+    obj.tx_index = message.txIndex !== BigInt(0) ? (message.txIndex?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: AbsoluteTxPositionAminoMsg): AbsoluteTxPosition {

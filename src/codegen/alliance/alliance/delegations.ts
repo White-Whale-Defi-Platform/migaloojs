@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { RewardHistory, RewardHistoryAmino, RewardHistorySDKType } from "./params";
 import { Coin, CoinAmino, CoinSDKType, DecCoin, DecCoinAmino, DecCoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../binary";
@@ -212,7 +213,7 @@ export const Delegation = {
     } else {
       obj.reward_history = message.rewardHistory;
     }
-    obj.last_reward_claim_height = message.lastRewardClaimHeight !== BigInt(0) ? message.lastRewardClaimHeight.toString() : undefined;
+    obj.last_reward_claim_height = message.lastRewardClaimHeight !== BigInt(0) ? (message.lastRewardClaimHeight?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: DelegationAminoMsg): Delegation {

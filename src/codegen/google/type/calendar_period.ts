@@ -1,3 +1,4 @@
+//@ts-nocheck
 /**
  * A `CalendarPeriod` represents the abstract concept of a time period that has
  * a canonical start. Grammatically, "the start of the current

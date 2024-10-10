@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { toTimestamp, fromTimestamp, DeepPartial } from "../../helpers";

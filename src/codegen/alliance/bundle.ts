@@ -1,3 +1,4 @@
+//@ts-nocheck
 import * as _0 from "./alliance/alliance";
 import * as _1 from "./alliance/delegations";
 import * as _2 from "./alliance/events";

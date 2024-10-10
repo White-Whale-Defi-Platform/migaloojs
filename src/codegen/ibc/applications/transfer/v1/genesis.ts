@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { DenomTrace, DenomTraceAmino, DenomTraceSDKType, Params, ParamsAmino, ParamsSDKType } from "./transfer";
 import { Coin, CoinAmino, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../../../binary";

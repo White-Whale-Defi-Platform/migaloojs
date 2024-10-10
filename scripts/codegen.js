@@ -17,6 +17,7 @@ telescope({
     classesUseArrowFunctions: true,
 
     tsDisable: {
+      disableAll: true,
       patterns: ['**/tx.registry.ts','k8s.io/**','tendermint/**','cosmos/**'],
       files: [
         'cosmos/auth/v1beta1/query.ts',

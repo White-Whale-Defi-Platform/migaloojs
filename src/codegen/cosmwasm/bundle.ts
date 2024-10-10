@@ -1,3 +1,4 @@
+//@ts-nocheck
 import * as _85 from "./wasm/v1/authz";
 import * as _86 from "./wasm/v1/genesis";
 import * as _87 from "./wasm/v1/ibc";

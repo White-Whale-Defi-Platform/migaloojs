@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Duration, DurationAmino, DurationSDKType } from "../../google/protobuf/duration";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../binary";

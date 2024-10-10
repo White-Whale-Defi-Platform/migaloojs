@@ -1,3 +1,4 @@
+//@ts-nocheck
 /**
  * The canonical error codes for gRPC APIs.
  * 

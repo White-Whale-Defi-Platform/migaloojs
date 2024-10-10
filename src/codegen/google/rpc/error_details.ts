@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Duration, DurationAmino, DurationSDKType } from "../protobuf/duration";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { DeepPartial } from "../../helpers";
@@ -1143,7 +1144,7 @@ export const ErrorInfo = {
     }
     Object.entries(message.metadata).forEach(([key, value]) => {
       ErrorInfo_MetadataEntry.encode({
-        key: (key as any),
+        key: key as any,
         value
       }, writer.uint32(26).fork()).ldelim();
     });

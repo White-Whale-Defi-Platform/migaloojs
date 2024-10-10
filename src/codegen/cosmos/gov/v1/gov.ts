@@ -626,7 +626,7 @@ export const WeightedVoteOption = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.option = (reader.int32() as any);
+          message.option = reader.int32() as any;
           break;
         case 2:
           message.weight = reader.string();
@@ -747,7 +747,7 @@ export const Deposit = {
   },
   toAmino(message: Deposit): DepositAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+    obj.proposal_id = message.proposalId !== BigInt(0) ? (message.proposalId?.toString)() : undefined;
     obj.depositor = message.depositor === "" ? undefined : message.depositor;
     if (message.amount) {
       obj.amount = message.amount.map(e => e ? Coin.toAmino(e) : undefined);
@@ -854,7 +854,7 @@ export const Proposal = {
           message.messages.push(Any.decode(reader, reader.uint32()));
           break;
         case 3:
-          message.status = (reader.int32() as any);
+          message.status = reader.int32() as any;
           break;
         case 4:
           message.finalTallyResult = TallyResult.decode(reader, reader.uint32());
@@ -951,7 +951,7 @@ export const Proposal = {
   },
   toAmino(message: Proposal): ProposalAmino {
     const obj: any = {};
-    obj.id = message.id !== BigInt(0) ? message.id.toString() : undefined;
+    obj.id = message.id !== BigInt(0) ? (message.id?.toString)() : undefined;
     if (message.messages) {
       obj.messages = message.messages.map(e => e ? Any.toAmino(e) : undefined);
     } else {
@@ -1178,7 +1178,7 @@ export const Vote = {
   },
   toAmino(message: Vote): VoteAmino {
     const obj: any = {};
-    obj.proposal_id = message.proposalId !== BigInt(0) ? message.proposalId.toString() : undefined;
+    obj.proposal_id = message.proposalId !== BigInt(0) ? (message.proposalId?.toString)() : undefined;
     obj.voter = message.voter === "" ? undefined : message.voter;
     if (message.options) {
       obj.options = message.options.map(e => e ? WeightedVoteOption.toAmino(e) : undefined);

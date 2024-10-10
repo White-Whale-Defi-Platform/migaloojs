@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { BinaryReader, BinaryWriter } from "../../binary";

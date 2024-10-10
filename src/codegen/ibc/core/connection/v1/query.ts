@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../../../cosmos/base/query/v1beta1/pagination";
 import { ConnectionEnd, ConnectionEndAmino, ConnectionEndSDKType, IdentifiedConnection, IdentifiedConnectionAmino, IdentifiedConnectionSDKType } from "./connection";
 import { Height, HeightAmino, HeightSDKType, IdentifiedClientState, IdentifiedClientStateAmino, IdentifiedClientStateSDKType, Params, ParamsAmino, ParamsSDKType } from "../../client/v1/client";
@@ -1140,8 +1141,8 @@ export const QueryConnectionConsensusStateRequest = {
   toAmino(message: QueryConnectionConsensusStateRequest): QueryConnectionConsensusStateRequestAmino {
     const obj: any = {};
     obj.connection_id = message.connectionId === "" ? undefined : message.connectionId;
-    obj.revision_number = message.revisionNumber !== BigInt(0) ? message.revisionNumber.toString() : undefined;
-    obj.revision_height = message.revisionHeight !== BigInt(0) ? message.revisionHeight.toString() : undefined;
+    obj.revision_number = message.revisionNumber !== BigInt(0) ? (message.revisionNumber?.toString)() : undefined;
+    obj.revision_height = message.revisionHeight !== BigInt(0) ? (message.revisionHeight?.toString)() : undefined;
     return obj;
   },
   fromAminoMsg(object: QueryConnectionConsensusStateRequestAminoMsg): QueryConnectionConsensusStateRequest {

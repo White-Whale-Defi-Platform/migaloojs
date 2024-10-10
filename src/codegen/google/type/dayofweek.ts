@@ -1,3 +1,4 @@
+//@ts-nocheck
 /** Represents a day of the week. */
 export enum DayOfWeek {
   /** DAY_OF_WEEK_UNSPECIFIED - The day of the week is unspecified. */
